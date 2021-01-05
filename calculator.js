@@ -1,106 +1,121 @@
-let sum;
-let sub;
-let mult;
-let div;
 let input=0;
 let addx;
+const display1=document.getElementById("display");
+const display2=document.getElementById("display2");
+const operator=document.getElementById("operator");
 
 function add () {
-if (document.getElementById("display").textContent===" "){
-	noInput();
+if (display1.textContent===" "){
+	return;
 	}
-else{	input+=parseFloat(document.getElementById("display").textContent);
-	document.getElementById("display2").textContent=input;
-	document.getElementById("display").textContent=" ";
-	document.getElementById("operator").textContent="+";
+else{	input+=parseFloat(display1.textContent);
+	display2.textContent=input;
+	display1.textContent=" ";
+	operator.textContent="+";
 	console.log(input)
 	addx=1;
 	}
 }
 function subtract(){
-if (document.getElementById("display").textContent===" "){
-	noInput();
+if (display1.textContent===" "){
+	return;
 	}
-else if(input===0){
-	document.getElementById("display2").textContent=
-	document.getElementById("display").textContent
-	document.getElementById("operator").textContent="-";
-input=parseFloat(document.getElementById("display").textContent);
-	document.getElementById("display").textContent=" ";
+else if(display2.textContent===" "){
+	display2.textContent=display1.textContent
+	operator.textContent="-";
+input=parseFloat(display1.textContent);
+	display1.textContent=" ";
 	
 	}
-else{	input-=parseFloat(document.getElementById("display").textContent);
-	document.getElementById("display2").textContent=input;
-	document.getElementById("display").textContent=" ";
-	document.getElementById("operator").textContent="-";
+else{	input-=parseFloat(display1.textContent);
+	display2.textContent=input;
+	display1.textContent=" ";
+	operator.textContent="-";
 	console.log(input)
 	addx=2;
 	}
 }
-function multiply (x,y) {
-	return mult=x*y;
+function multiply () {
+if (display1.textContent===" "){
+	return;
+	}
+	else if(display2.textContent===" "){
+	input=1;
+	input*=parseFloat(display1.textContent);
+	display2.textContent=input;
+	display1.textContent=" ";
+	operator.textContent="*";
+	console.log(input)
+	addx=3;
+	}
+	else{	
+	input*=parseFloat(display1.textContent);
+	display2.textContent=input;
+	display1.textContent=" ";
+	operator.textContent="*";
+	console.log(input)
+	addx=3;
+	}
+	
 }
 function divide (x,y) {
 	return div=x/y;
 }
-function operate (number1, number2, operator){
-	operator(number1, number2);
-}
 function equalize(){
 if (addx===1){
 	add();
-	document.getElementById("display2").textContent=input;
-	document.getElementById("operator").textContent="=";
+	display2.textContent=input;
+	operator.textContent="=";
 	}
 else if (addx===2){
 	subtract();
-	document.getElementById("display2").textContent=input;
-	document.getElementById("operator").textContent="=";
+	display2.textContent=input;
+	operator.textContent="=";
+	}
+	else if (addx===3){
+	multiply();
+	display2.textContent=input;
+	operator.textContent="=";
 	}
 }
 
 function clear(){
-	document.getElementById("display").textContent=" ";
-	document.getElementById("display2").textContent=" ";
-	document.getElementById("operator").textContent=" ";
+	display1.textContent=" ";
+	display2.textContent=" ";
+	operator.textContent=" ";
 	input=0;
-}
-
-function noInput(){
-	document.getElementById("display").textContent=" ";
-	document.getElementById("operator").textContent=" ";
 }
 
 
 function zero(){
-document.getElementById("display").textContent+="0";
+display1.textContent+="0";
 }
 function one(){
-document.getElementById("display").textContent+="1";
+display1.textContent+="1";
 }
 function two(){
-document.getElementById("display").textContent+="2";
+display1.textContent+="2";
 }
 function three(){
-document.getElementById("display").textContent+="3";
+display1.textContent+="3";
 }
 function four(){
-document.getElementById("display").textContent+="4";
+display1.textContent+="4";
 }
 function five(){
-document.getElementById("display").textContent+="5";
+display1.textContent+="5";
 }
 function six(){
-document.getElementById("display").textContent+="6";
+display1.textContent+="6";
 }
 function seven(){
-document.getElementById("display").textContent+="7";
+display1.textContent+="7";
 }
 function eight(){
-document.getElementById("display").textContent+="8";
+display1.textContent+="8";
 }
 function nine(){
-document.getElementById("display").textContent+="9";
+display1.textContent+="9";
 }
 
 let numbers=[seven,eight,nine,four,five,six,one,two,three,zero];
@@ -113,5 +128,6 @@ document.getElementById("+").addEventListener("click",add);
 document.getElementById("=").addEventListener("click",equalize);
 document.getElementById("-").addEventListener("click",subtract);
 document.getElementById("Clear").addEventListener("click",clear);
+document.getElementById("*").addEventListener("click",multiply);
 
 
