@@ -8,112 +8,140 @@ const operator=document.querySelectorAll(".grid-operator");
 let target;
 let helpFunction;
 
-function add(number1, number2){
-	operatorSign.textContent="+";	
-	if (display1.textContent===" "){
-	return;
-	}
-	else if(display2.textContent===" "){
-		display2.textContent=number1;
-		display1.textContent=" ";		
-		}
-	else{
-			solution=number1+number2;
-			display2.textContent=solution;
-			display1.textContent=" ";
-	}
-}
-function subtract(number1, number2){
-	operatorSign.textContent="-";
-	if (display1.textContent===" "){
-	return;
-	}
-	else if(display2.textContent===" "){
-		display2.textContent=number1;
-		display1.textContent=" ";		
-		}
-	else{	
-	solution=number2-number1;
-	display2.textContent=solution;
-	display1.textContent=" ";
-	}	
-}
-function multiply(number1, number2){
-	operatorSign.textContent="*";
-	if (display1.textContent===" "){
-	return;
-	}
-	else if(display2.textContent===" "){
-		display2.textContent=number1;
-		display1.textContent=" ";		
-		}
-	else{	
-	solution=number2*number1;
-	display2.textContent=solution;
-	display1.textContent=" ";
-	}	
-}
-function divide(number1, number2){
-	solution=number1/number2
-	console.log(4);
-}
-function equalize(number1, number2){
-	if(display1.textContent===" " && display2.textContent===" ") {
-		return;
-		}
-		
-	else{
-	switch(operatorSign.textContent){
-		case "+":
-			add(number1,number2);
-			break;
-		case "-":
-			subtract(number1,number2);
-			break;
-		case "*":
-			multiply(number1,number2);
-			break;
-		case ":":
-			divide();
-			break;
-		}
-	}
-operatorSign.textContent="=";
-	
-}
 
+function add() {
+	if (display1.textContent===" "){
+		return;
+	}
+	else{
+		if (operatorSign.textContent===" "){
+			display2.textContent=parseInt(display1.textContent);
+			display1.textContent=" ";
+			console.log(1);
+			operatorSign.textContent="+";
+			return;
+	}
+		else{
+			operate();
+			display1.textContent=" ";
+			operatorSign.textContent="+";
+	}
+	}
+	}
+	
+function subtract(){
+
+	if (display1.textContent===" "){
+		return;
+	}
+	else{
+		if (operatorSign.textContent===" "){
+			display2.textContent=parseInt(display1.textContent);
+			display1.textContent=" ";
+			console.log(1);
+			operatorSign.textContent="-";
+			return;
+	}
+		else{
+			console.log(2);
+			operate();
+			display1.textContent=" ";
+			operatorSign.textContent="-";
+	}
+	}
+	}
+	
+function multiply(){
+
+	if (display1.textContent===" "){
+		return;
+	}
+	else{
+		if (operatorSign.textContent===" "){
+			display2.textContent=parseInt(display1.textContent);
+			display1.textContent=" ";
+			operatorSign.textContent="*";
+			return;
+	}
+		else{
+			operate();
+			display1.textContent=" ";
+			operatorSign.textContent="*";
+	}
+	}
+	}
+function divide(){
+
+	if (display1.textContent===" "){
+		return;
+	}
+	else{
+		if (operatorSign.textContent===" "){
+			display2.textContent=parseInt(display1.textContent);
+			display1.textContent=" ";
+			operatorSign.textContent=":";
+			return;
+	}
+		else{
+			operate();
+			display1.textContent=" ";
+			operatorSign.textContent=":";
+	}
+	}
+	}
+	
+function equalize(){
+
+	if (display1.textContent===" "){
+		return;
+	}
+	else{
+		if (operatorSign.textContent===" "){
+			display2.textContent=parseInt(display1.textContent);
+			display1.textContent=" ";
+			operatorSign.textContent="=";
+			return;
+	}
+		else{
+			operate();
+			display1.textContent=" ";
+			operatorSign.textContent="=";
+	}
+	}
+	}
+	
+	
 function operate(){
 	number1=parseInt(display1.textContent);
 	number2=parseInt(display2.textContent);
-	switch (target) {
+	switch (operatorSign.textContent) {
 		case "+":
-			add(number1,number2);
+			solution=number1+number2;
+			display2.textContent=solution;
 			break;
 		case "-":
-			subtract(number1,number2);
+			solution=number2-number1;
+			display2.textContent=solution;
 			break;
 		case "*":
-			multiply(number1,number2);
+			solution=number1*number2;
+			display2.textContent=solution;
 			break;
 		case ":":
-			divide();
+			solution=number2/number1;
+			display2.textContent=solution;
 			break;
 		case "=":
-			equalize(number1,number2);
+			equalize();
 			break;
 	}
 
 }
-
-
-
-
 
 function clear(){
 	display1.textContent=" ";
 	display2.textContent=" ";
 	operatorSign.textContent=" ";
-	input=0;
 }
 
 
@@ -154,24 +182,9 @@ for (i=0;i<btns.length;i++){
 	btns[i].addEventListener("click",numbers[i]);
 	}
 
-document.getElementById("+").addEventListener("click",event => {
-target = event.target.textContent;
-operate();
-});
-document.getElementById("-").addEventListener("click",event => {
-target = event.target.textContent;
-operate();
-});
-document.getElementById("*").addEventListener("click",event => {
-target = event.target.textContent;
-operate();
-});
-document.getElementById(":").addEventListener("click",event => {
-target = event.target.textContent;
-operate();
-});
-document.getElementById("=").addEventListener("click",event => {
-target = event.target.textContent;
-operate();
-});
+document.getElementById("+").addEventListener("click",add);
+document.getElementById("-").addEventListener("click",subtract);
+document.getElementById("*").addEventListener("click",multiply);
+document.getElementById(":").addEventListener("click",divide);
+document.getElementById("=").addEventListener("click",equalize);
 document.getElementById("Clear").addEventListener("click",clear);
