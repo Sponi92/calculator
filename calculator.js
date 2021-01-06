@@ -6,9 +6,25 @@ let number1;
 let number2;
 const operator=document.querySelectorAll(".grid-operator");
 let target;
+let helpFunction;
 
 function add(number1, number2){
-	operatorSign.textContent="+";
+	operatorSign.textContent="+";	
+	if (display1.textContent===" "){
+	return;
+	}
+	else if(display2.textContent===" "){
+		display2.textContent=number1;
+		display1.textContent=" ";		
+		}
+	else{
+			solution=number1+number2;
+			display2.textContent=solution;
+			display1.textContent=" ";
+	}
+}
+function subtract(number1, number2){
+	operatorSign.textContent="-";
 	if (display1.textContent===" "){
 	return;
 	}
@@ -17,25 +33,53 @@ function add(number1, number2){
 		display1.textContent=" ";		
 		}
 	else{	
-	solution=number1+number2;
+	solution=number2-number1;
 	display2.textContent=solution;
 	display1.textContent=" ";
 	}	
 }
-function subtract(number1, number2){
-	solution=number1-number2;
-	console.log(2);
-}
 function multiply(number1, number2){
-	solution=number1*number2
-	console.log(3);
+	operatorSign.textContent="*";
+	if (display1.textContent===" "){
+	return;
+	}
+	else if(display2.textContent===" "){
+		display2.textContent=number1;
+		display1.textContent=" ";		
+		}
+	else{	
+	solution=number2*number1;
+	display2.textContent=solution;
+	display1.textContent=" ";
+	}	
 }
 function divide(number1, number2){
 	solution=number1/number2
 	console.log(4);
 }
 function equalize(number1, number2){
-console.log(5);
+	if(display1.textContent===" " && display2.textContent===" ") {
+		return;
+		}
+		
+	else{
+	switch(operatorSign.textContent){
+		case "+":
+			add(number1,number2);
+			break;
+		case "-":
+			subtract(number1,number2);
+			break;
+		case "*":
+			multiply(number1,number2);
+			break;
+		case ":":
+			divide();
+			break;
+		}
+	}
+operatorSign.textContent="=";
+	
 }
 
 function operate(){
@@ -46,18 +90,19 @@ function operate(){
 			add(number1,number2);
 			break;
 		case "-":
-			subtract();
+			subtract(number1,number2);
 			break;
 		case "*":
-			multiply();
+			multiply(number1,number2);
 			break;
 		case ":":
 			divide();
 			break;
 		case "=":
-			equalize();
+			equalize(number1,number2);
 			break;
 	}
+
 }
 
 
@@ -129,8 +174,4 @@ document.getElementById("=").addEventListener("click",event => {
 target = event.target.textContent;
 operate();
 });
-
-
-
-
 document.getElementById("Clear").addEventListener("click",clear);
