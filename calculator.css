@@ -1,23 +1,26 @@
 #container{
-display:grid;
-border-color:black;
-border-width:5px;
-border-style:solid;
-width:500px;
-height:auto;
+	display:grid;
+	border-color:black;
+	border-width:5px;
+	border-style:solid;
+	width:500px;
+	height:auto;
 }
 .grid-item{
-display:grid;
-grid-template-columns: repeat(4, 1fr);
+	display:grid;
+	grid-template-columns: repeat(4, 1fr);
 }
 button{
-text-align:center;
-border-color:black;
-border-style:solid;
-border-width:0.5px;
-line-height:99px;
+	text-align:center;
+	border-color:black;
+	border-style:solid;
+	border-width:0.5px;
+	line-height:99px;
 }
-.display{
-height:33.3px;
+	.display{
+	height:33.3px;
 }
-
+	.grid-extra{
+	display:grid;
+	grid-template-columns: repeat(2, 1fr);
+}
