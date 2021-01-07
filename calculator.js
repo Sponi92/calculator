@@ -151,6 +151,10 @@ function clear(){
 	operatorSign.textContent=" ";
 }
 
+function changeMinus(){
+	display1.textContent=parseFloat(display1.textContent)*-1;
+	}
+
 function backspace(){
 	neu= display1.textContent.slice(0, -1);
 	display1.textContent=neu;
@@ -165,34 +169,84 @@ function pointNumber(){
 	}
 }
 function zero(){
-	display1.textContent+="0";
+	if (display1.textContent.length>10){
+		return;
+	}
+	else{
+		display1.textContent+="0";
+	}
 }
 function one(){
-	display1.textContent+="1";
+	if (display1.textContent.length>10){
+		return;
+	}
+	else{
+		display1.textContent+="1";
+	}
 }
 function two(){
-	display1.textContent+="2";
+	if (display1.textContent.length>10){
+		return;
+	}
+	else{
+		display1.textContent+="2";
+	}
 }
 function three(){
-	display1.textContent+="3";
+	if (display1.textContent.length>10){
+		return;
+	}
+	else{
+		display1.textContent+="3";
+	}
 }
 function four(){
+	if (display1.textContent.length>10){
+	return;
+	}
+	else{
 	display1.textContent+="4";
+	}
 }
 function five(){
+	if (display1.textContent.length>10){
+	return;
+	}
+	else{
 	display1.textContent+="5";
+	}
 }
 function six(){
+	if (display1.textContent.length>10){
+	return;
+	}
+	else{
 	display1.textContent+="6";
+	}
 }
 function seven(){
+	if (display1.textContent.length>10){
+	return;
+	}
+	else{
 	display1.textContent+="7";
+	}
 }
 function eight(){
+	if (display1.textContent.length>10){
+	return;
+	}
+	else{
 	display1.textContent+="8";
+	}
 }
 function nine(){
+	if (display1.textContent.length>10){
+	return;
+	}
+	else{
 	display1.textContent+="9";
+	}
 }
 
 let numbers=[seven,eight,nine,four,five,six,one,two,three,zero];
@@ -208,7 +262,8 @@ document.getElementById(":").addEventListener("click",divide);
 document.getElementById("=").addEventListener("click",equalize);
 document.getElementById("Clear").addEventListener("click",clear);
 document.getElementById("C").addEventListener("click",backspace);
-document.getElementById(".").addEventListener("click",pointNumber);
+document.getElementById("point").addEventListener("click",pointNumber);
+document.getElementById("changeMinus").addEventListener("click",changeMinus);
 
 document.addEventListener ("keydown", function (event) {
 	key=event.key;
@@ -280,5 +335,9 @@ document.addEventListener ("keydown", function (event) {
 		case "Enter":
 			equalize();
 			break;
+		case "Escape":
+			clear();
+			break;
+			
 	}
 });

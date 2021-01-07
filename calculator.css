@@ -1,10 +1,21 @@
+body{
+	background-color:#e4e6eb;
+}
+
 #container{
 	display:grid;
+	margin:auto;
+	margin-top:50px;
 	border-color:black;
 	border-width:5px;
 	border-style:solid;
-	width:500px;
+	width:300px;
 	height:auto;
+}
+h1 {
+	font-family:"sans-serif", Helvetica;
+	text-align:center;
+	color: red;
 }
 .grid-item{
 	display:grid;
@@ -14,13 +25,38 @@ button{
 	text-align:center;
 	border-color:black;
 	border-style:solid;
-	border-width:0.5px;
-	line-height:99px;
+	border-width:0.33px;
+	line-height:70px;
+	font-size:20px;
+	background-color:black;
+	outline:none;
 }
-	.display{
+.grid-operator{
+	color:red;
+	font-weight:bold;
+}
+.grid-number{
+	color:green;
+}
+.display{
+ 	background: linear-gradient(to right, blue , white);
 	height:33.3px;
+	font-weight:bold;
+	font-size:20px;
+	max-width:300px;
+	line-height:33.3px;
 }
-	.grid-extra{
+#display2{
+	text-align:right;
+	padding-right:5px;
+}
+#display, #operator{
+	padding-left:5px;
+	}
+.grid-extra{
 	display:grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 }
+#C, #point ,#Clear{
+	color:yellow;
+} 
